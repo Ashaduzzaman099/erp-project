@@ -1,11 +1,12 @@
 const Navbar = () => {
   return (
-    <div className="h-14 bg-white shadow flex items-center justify-between px-4">
+    <header className="flex h-14 items-center justify-between bg-white px-4 shadow">
       <h1 className="font-semibold text-gray-700">Universal Crop Care (UCC)</h1>
-      <button className="bg-red-500 text-white px-3 py-1 rounded">
+
+      <button className="rounded bg-red-500 px-3 py-1 text-white">
         Logout
       </button>
-    </div>
+    </header>
   );
 };
 

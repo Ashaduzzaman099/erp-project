@@ -1,43 +1,8 @@
-import logo from "../assets/logo.png";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-
+import { sidebarMenu } from "../../constants/sidebarMenu";
+import logo from "../assets/logo.png";
 // Menu data array
-const menuItems = [
-  { title: "Dashboard", path: "/", children: [] },
-  {
-    title: "Officers",
-    key: "officers",
-    children: [
-      { title: "Add Officer", path: "/officers/create" },
-      { title: "View Officers", path: "/officers" },
-    ],
-  },
-  {
-    title: "Customers",
-    key: "customers",
-    children: [
-      { title: "Add Customer", path: "/customers/create" },
-      { title: "View Customers", path: "/customers" },
-    ],
-  },
-  {
-    title: "Products",
-    key: "products",
-    children: [
-      { title: "Add Product", path: "/products/create" },
-      { title: "View Products", path: "/products" },
-    ],
-  },
-  {
-    title: "Invoices",
-    key: "invoice",
-    children: [
-      { title: "Create Invoice", path: "/invoices/create" },
-      { title: "Invoice List", path: "/invoices" },
-    ],
-  },
-];
 
 const Sidebar = () => {
   const [openMenu, setOpenMenu] = useState(null);
@@ -60,7 +25,7 @@ const Sidebar = () => {
 
       {/* Menu */}
       <nav className="flex-1 p-4 space-y-2">
-        {menuItems.map((item) => (
+        {sidebarMenu.map((item) => (
           <div key={item.title}>
             {item.children.length === 0 ? (
               <NavLink
@@ -85,7 +50,11 @@ const Sidebar = () => {
                 {openMenu === item.key && (
                   <div className="ml-4 mt-1 space-y-1 text-sm">
                     {item.children.map((child) => (
-                      <NavLink key={child.title} to={child.path} className={linkClass}>
+                      <NavLink
+                        key={child.title}
+                        to={child.path}
+                        className={linkClass}
+                      >
                         {child.title}
                       </NavLink>
                     ))}

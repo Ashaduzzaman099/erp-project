@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { sidebarMenu } from "../../constants/sidebarMenu";
-import logo from "../assets/logo.png";
+// import logo from "../assets/logo.png";
 // Menu data array
 
 const Sidebar = () => {
@@ -18,7 +18,7 @@ const Sidebar = () => {
       {/* Logo */}
       <div className="flex items-center bg-slate-900 gap-2 p-4 border-b border-green-600">
         <NavLink to="/" className="flex items-center gap-2">
-          <img src={logo} alt="UCC Logo" className="w-10 h-10 object-contain" />
+          {/* <img src={logo} alt="UCC Logo" className="w-10 h-10 object-contain" /> */}
           <span className="text-lg font-bold text-white">UCC ERP</span>
         </NavLink>
       </div>

@@ -5,8 +5,8 @@ import AdminLayout from "../../layouts/AdminLayout";
 import Dashboard from "../../pages/Dashboard";
 import InvoiceCreate from "../../pages/invoices/InvoiceCreate";
 
-import AddProduct from "../../pages/products/AddProduct";
-import ViewAllProducts from "../../pages/products/ViewAllProducts";
+// import AddProduct from "../../pages/products/AddProduct";
+// import ViewAllProducts from "../../pages/products/ViewAllProducts";
 
 function AppRouter() {
   return (

@@ -5,6 +5,7 @@ import officersData from "../../data/officers";
 import products from "../../data/products";
 import CustomerSection from "../../features/invoice/components/CustomerSection";
 import InvoiceInfoSection from "../../features/invoice/components/InvoiceInfoSection";
+import InvoiceItemsSection from "../../features/invoice/components/InvoiceItemsSection";
 import OfficerSection from "../../features/invoice/components/OfficerSection";
 const InvoiceCreate = () => {
   /* ================= DATA ================= */
@@ -148,16 +149,14 @@ const InvoiceCreate = () => {
           invoiceData={invoiceData}
           setInvoiceData={setInvoiceData}
         />
-      </div>
-      <div className="space-y-6">
+
         <OfficerSection
           officers={officers}
           selectedOfficerId={selectedOfficerId}
           invoiceData={invoiceData}
           handleOfficerSelect={handleOfficerSelect}
         />
-      </div>
-      <div className="space-y-6">
+
         <CustomerSection
           selectedOfficerId={selectedOfficerId}
           selectedCustomerId={selectedCustomerId}
@@ -165,6 +164,16 @@ const InvoiceCreate = () => {
           invoiceData={invoiceData}
           setInvoiceData={setInvoiceData}
           handleCustomerSelect={handleCustomerSelect}
+        />
+
+        <InvoiceItemsSection
+          invoiceData={invoiceData}
+          products={products}
+          handleProductSelect={handleProductSelect}
+          handlePackSizeSelect={handlePackSizeSelect}
+          handleItemChange={handleItemChange}
+          addItem={addItem}
+          removeItem={removeItem}
         />
       </div>
 

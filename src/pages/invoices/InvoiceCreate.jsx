@@ -1,5 +1,5 @@
 import { useState } from "react";
-// import Invoice from "../../components/Invoice";
+import Invoice from "../../components/Invoice";
 import customersData from "../../data/customers";
 import officersData from "../../data/officers";
 import products from "../../data/products";
@@ -178,7 +178,9 @@ const InvoiceCreate = () => {
       </div>
 
       {/* ================= RIGHT ================= */}
-      <div className="bg-gray-50 p-4 rounded-2xl shadow-lg overflow-auto max-h-[85vh]"></div>
+      <div className="bg-gray-50 p-4 rounded-2xl shadow-lg overflow-auto max-h-[85vh]">
+        <Invoice invoice={invoiceData} />
+      </div>
     </div>
   );
 };

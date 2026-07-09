@@ -19,8 +19,8 @@ function AppRouter() {
           <Route path="/invoices/create" element={<InvoiceCreate />} />
 
           {/* Products */}
-          <Route path="/products/create" element={<AddProduct />} />
-          <Route path="/products" element={<ViewAllProducts />} />
+          {/* <Route path="/products/create" element={<AddProduct />} />
+          <Route path="/products" element={<ViewAllProducts />} /> */}
         </Route>
       </Routes>
     </BrowserRouter>

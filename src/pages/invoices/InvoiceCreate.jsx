@@ -3,7 +3,9 @@ import { useState } from "react";
 import customersData from "../../data/customers";
 import officersData from "../../data/officers";
 import products from "../../data/products";
+import CustomerSection from "../../features/invoice/components/CustomerSection";
 import InvoiceInfoSection from "../../features/invoice/components/InvoiceInfoSection";
+import OfficerSection from "../../features/invoice/components/OfficerSection";
 const InvoiceCreate = () => {
   /* ================= DATA ================= */
   const [officers] = useState(officersData);
@@ -145,6 +147,24 @@ const InvoiceCreate = () => {
         <InvoiceInfoSection
           invoiceData={invoiceData}
           setInvoiceData={setInvoiceData}
+        />
+      </div>
+      <div className="space-y-6">
+        <OfficerSection
+          officers={officers}
+          selectedOfficerId={selectedOfficerId}
+          invoiceData={invoiceData}
+          handleOfficerSelect={handleOfficerSelect}
+        />
+      </div>
+      <div className="space-y-6">
+        <CustomerSection
+          selectedOfficerId={selectedOfficerId}
+          selectedCustomerId={selectedCustomerId}
+          filteredCustomers={filteredCustomers}
+          invoiceData={invoiceData}
+          setInvoiceData={setInvoiceData}
+          handleCustomerSelect={handleCustomerSelect}
         />
       </div>
 

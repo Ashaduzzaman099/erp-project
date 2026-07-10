@@ -1,38 +1,29 @@
-import { useState } from "react";
+import useInvoice from "../../features/invoice/hooks/useInvoice";
 import Invoice from "../../components/Invoice";
-import customersData from "../../data/customers";
-import officersData from "../../data/officers";
-import products from "../../data/products";
 import CustomerSection from "../../features/invoice/components/CustomerSection";
 import InvoiceInfoSection from "../../features/invoice/components/InvoiceInfoSection";
 import InvoiceItemsSection from "../../features/invoice/components/InvoiceItemsSection";
 import OfficerSection from "../../features/invoice/components/OfficerSection";
 const InvoiceCreate = () => {
-  /* ================= DATA ================= */
-  const [officers] = useState(officersData);
-  const [customers] = useState(customersData);
+ 
 
-  /* ================= STATE ================= */
-  const [selectedOfficerId, setSelectedOfficerId] = useState(null);
-  const [filteredCustomers, setFilteredCustomers] = useState([]);
-  const [selectedCustomerId, setSelectedCustomerId] = useState(null);
+  const {
+  officers,
+  customers,
+  products,
 
-  const [invoiceData, setInvoiceData] = useState({
-    id: "13",
-    date: new Date().toISOString().split("T")[0],
-    officer: { name: "", phone: "" },
-    customer: { name: "", business: "", address: "", mobile: "" },
-    items: [
-      {
-        productId: "",
-        productName: "",
-        packSizeId: "",
-        packSizeLabel: "",
-        quantity: 1,
-        price: 0,
-      },
-    ],
-  });
+  selectedOfficerId,
+  setSelectedOfficerId,
+
+  filteredCustomers,
+  setFilteredCustomers,
+
+  selectedCustomerId,
+  setSelectedCustomerId,
+
+  invoiceData,
+  setInvoiceData,
+} = useInvoice();
 
   /* ================= OFFICER ================= */
   const handleOfficerSelect = (id) => {

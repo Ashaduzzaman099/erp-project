@@ -1,29 +1,28 @@
-import useInvoice from "../../features/invoice/hooks/useInvoice";
 import Invoice from "../../components/Invoice";
 import CustomerSection from "../../features/invoice/components/CustomerSection";
 import InvoiceInfoSection from "../../features/invoice/components/InvoiceInfoSection";
 import InvoiceItemsSection from "../../features/invoice/components/InvoiceItemsSection";
 import OfficerSection from "../../features/invoice/components/OfficerSection";
+import useInvoice from "../../features/invoice/hooks/useInvoice";
+
 const InvoiceCreate = () => {
- 
-
   const {
-  officers,
-  customers,
-  products,
+    officers,
+    customers,
+    products,
 
-  selectedOfficerId,
-  setSelectedOfficerId,
+    selectedOfficerId,
+    setSelectedOfficerId,
 
-  filteredCustomers,
-  setFilteredCustomers,
+    filteredCustomers,
+    setFilteredCustomers,
 
-  selectedCustomerId,
-  setSelectedCustomerId,
+    selectedCustomerId,
+    setSelectedCustomerId,
 
-  invoiceData,
-  setInvoiceData,
-} = useInvoice();
+    invoiceData,
+    setInvoiceData,
+  } = useInvoice();
 
   /* ================= OFFICER ================= */
   const handleOfficerSelect = (id) => {

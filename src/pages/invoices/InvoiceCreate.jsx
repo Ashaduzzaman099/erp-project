@@ -12,37 +12,17 @@ const InvoiceCreate = () => {
     products,
 
     selectedOfficerId,
-    setSelectedOfficerId,
 
     filteredCustomers,
-    setFilteredCustomers,
 
     selectedCustomerId,
-    setSelectedCustomerId,
 
     invoiceData,
     setInvoiceData,
 
     handleOfficerSelect,
+    handleCustomerSelect,
   } = useInvoice();
-
-  /* ================= CUSTOMER ================= */
-  const handleCustomerSelect = (id) => {
-    setSelectedCustomerId(id);
-    const customer = customers.find((c) => c.id === id);
-
-    if (customer) {
-      setInvoiceData((prev) => ({
-        ...prev,
-        customer: {
-          name: customer.name,
-          business: customer.business,
-          address: customer.address,
-          mobile: customer.mobile,
-        },
-      }));
-    }
-  };
 
   /* ================= ITEMS ================= */
   const handleProductSelect = (index, productId) => {

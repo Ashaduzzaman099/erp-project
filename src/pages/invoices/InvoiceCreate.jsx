@@ -22,32 +22,9 @@ const InvoiceCreate = () => {
 
     invoiceData,
     setInvoiceData,
+
+    handleOfficerSelect,
   } = useInvoice();
-
-  /* ================= OFFICER ================= */
-  const handleOfficerSelect = (id) => {
-    setSelectedOfficerId(id);
-
-    if (id) {
-      const officer = officers.find((o) => o.id === id);
-      setInvoiceData((prev) => ({
-        ...prev,
-        officer: { name: officer.name, phone: officer.phone },
-        customer: { name: "", business: "", address: "", mobile: "" },
-      }));
-
-      setFilteredCustomers(customers.filter((c) => c.officerId === id));
-      setSelectedCustomerId(null);
-    } else {
-      setInvoiceData((prev) => ({
-        ...prev,
-        officer: { name: "", phone: "" },
-        customer: { name: "", business: "", address: "", mobile: "" },
-      }));
-      setFilteredCustomers([]);
-      setSelectedCustomerId(null);
-    }
-  };
 
   /* ================= CUSTOMER ================= */
   const handleCustomerSelect = (id) => {

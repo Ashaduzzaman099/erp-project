@@ -8,8 +8,9 @@ import useInvoice from "../../features/invoice/hooks/useInvoice";
 const InvoiceCreate = () => {
   const {
     officers,
-    customers,
     products,
+    addItem,
+    removeItem,
 
     selectedOfficerId,
 
@@ -22,69 +23,10 @@ const InvoiceCreate = () => {
 
     handleOfficerSelect,
     handleCustomerSelect,
+    handleProductSelect,
+    handlePackSizeSelect,
+    handleItemChange,
   } = useInvoice();
-
-  /* ================= ITEMS ================= */
-  const handleProductSelect = (index, productId) => {
-    const product = products.find((p) => p.id === productId);
-    const updatedItems = [...invoiceData.items];
-
-    updatedItems[index] = {
-      ...updatedItems[index],
-      productId,
-      productName: product.name,
-      packSizeId: "",
-      packSizeLabel: "",
-      price: 0,
-    };
-
-    setInvoiceData((prev) => ({ ...prev, items: updatedItems }));
-  };
-
-  const handlePackSizeSelect = (index, packSizeId) => {
-    const item = invoiceData.items[index];
-    const product = products.find((p) => p.id === item.productId);
-    const pack = product.packSizes.find((p) => p.optionId === packSizeId);
-
-    const updatedItems = [...invoiceData.items];
-    updatedItems[index] = {
-      ...updatedItems[index],
-      packSizeId,
-      packSizeLabel: pack.label,
-      price: pack.unitPrice,
-    };
-
-    setInvoiceData((prev) => ({ ...prev, items: updatedItems }));
-  };
-
-  const handleItemChange = (index, field, value) => {
-    const updatedItems = [...invoiceData.items];
-    updatedItems[index][field] = field === "quantity" ? Number(value) : value;
-
-    setInvoiceData((prev) => ({ ...prev, items: updatedItems }));
-  };
-
-  const addItem = () =>
-    setInvoiceData((prev) => ({
-      ...prev,
-      items: [
-        ...prev.items,
-        {
-          productId: "",
-          productName: "",
-          packSizeId: "",
-          packSizeLabel: "",
-          quantity: 1,
-          price: 0,
-        },
-      ],
-    }));
-
-  const removeItem = (index) =>
-    setInvoiceData((prev) => ({
-      ...prev,
-      items: prev.items.filter((_, i) => i !== index),
-    }));
 
   /* ================= UI ================= */
   return (

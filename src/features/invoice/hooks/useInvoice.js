@@ -166,6 +166,7 @@ const useInvoice = () => {
 
   return {
     officers,
+    customers,
     products,
     addItem,
     removeItem,

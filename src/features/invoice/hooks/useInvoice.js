@@ -1,8 +1,7 @@
 import { useState } from "react";
-
-import customersData from "../../../data/customers";
-import officersData from "../../../data/officers";
-import productsData from "../../../data/products";
+import customerService from "../../../services/customerService";
+import officerService from "../../../services/officerService";
+import productService from "../../../services/productService";
 
 const useInvoice = () => {
   /* ================= OFFICER ================= */
@@ -11,7 +10,7 @@ const useInvoice = () => {
     setSelectedOfficerId(id);
 
     if (id) {
-      const officer = officers.find((o) => o.id === id);
+      const officer = officerService.getById(id);
 
       setInvoiceData((prev) => ({
         ...prev,
@@ -27,7 +26,7 @@ const useInvoice = () => {
         },
       }));
 
-      setFilteredCustomers(customers.filter((c) => c.officerId === id));
+      setFilteredCustomers(customerService.getByOfficerId(id));
 
       setSelectedCustomerId(null);
     } else {
@@ -54,7 +53,7 @@ const useInvoice = () => {
   const handleCustomerSelect = (id) => {
     setSelectedCustomerId(id);
 
-    const customer = customers.find((c) => c.id === id);
+    const customer = customerService.getById(id);
 
     if (customer) {
       setInvoiceData((prev) => ({
@@ -72,7 +71,7 @@ const useInvoice = () => {
   /* ================= PRODUCT ================= */
 
   const handleProductSelect = (index, productId) => {
-    const product = products.find((p) => p.id === productId);
+    const product = productService.getById(productId);
 
     if (!product) return;
 
@@ -139,9 +138,9 @@ const useInvoice = () => {
     }));
 
   /* ================= DATA ================= */
-  const [officers] = useState(officersData);
-  const [customers] = useState(customersData);
-  const [products] = useState(productsData);
+  const [officers] = useState(officerService.getAll());
+  const [customers] = useState(customerService.getAll());
+  const [products] = useState(productService.getAll());
 
   /* ================= STATE ================= */
   const [selectedOfficerId, setSelectedOfficerId] = useState(null);

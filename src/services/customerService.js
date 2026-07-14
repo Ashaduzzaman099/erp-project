@@ -7,13 +7,14 @@ const customerService = {
 
   getByOfficerId(officerId) {
     return customers.filter(
-      (customer) => customer.officerId === officerId
+      (customer) =>
+        String(customer.officerId) === String(officerId)
     );
   },
 
   getById(id) {
     return customers.find(
-      (customer) => customer.id === id
+      (customer) => String(customer.id) === String(id)
     );
   },
 };

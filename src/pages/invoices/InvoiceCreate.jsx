@@ -8,6 +8,7 @@ import useInvoice from "../../features/invoice/hooks/useInvoice";
 const InvoiceCreate = () => {
   const {
     officers,
+    customers,
     products,
     addItem,
     removeItem,

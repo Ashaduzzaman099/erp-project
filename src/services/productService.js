@@ -7,7 +7,7 @@ const productService = {
 
   getById(id) {
     return products.find(
-      (product) => product.id === id
+      (product) => String(product.id) === String(id)
     );
   },
 };

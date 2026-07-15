@@ -2,7 +2,7 @@ import { useState } from "react";
 import customerService from "../services/customerService";
 import officerService from "../services/officerService";
 import productService from "../services/productService";
-
+import createInvoiceItem from "../utils/createInvoiceItem";
 const useInvoice = () => {
   /* ================= OFFICER ================= */
 
@@ -152,16 +152,7 @@ const useInvoice = () => {
     date: new Date().toISOString().split("T")[0],
     officer: { name: "", phone: "" },
     customer: { name: "", business: "", address: "", mobile: "" },
-    items: [
-      {
-        productId: "",
-        productName: "",
-        packSizeId: "",
-        packSizeLabel: "",
-        quantity: 1,
-        price: 0,
-      },
-    ],
+    items: [createInvoiceItem()],
   });
 
   return {

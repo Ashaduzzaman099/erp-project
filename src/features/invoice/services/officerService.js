@@ -1,4 +1,4 @@
-import officers from "../data/officers";
+import officers from "../../../data/officers";
 
 const officerService = {
   getAll() {
@@ -6,9 +6,7 @@ const officerService = {
   },
 
   getById(id) {
-    return officers.find(
-      (officer) => String(officer.id) === String(id)
-    );
+    return officers.find((officer) => String(officer.id) === String(id));
   },
 };
 

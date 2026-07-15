@@ -1,4 +1,4 @@
-import customers from "../data/customers";
+import customers from "../../../data/customers";
 
 const customerService = {
   getAll() {
@@ -7,15 +7,12 @@ const customerService = {
 
   getByOfficerId(officerId) {
     return customers.filter(
-      (customer) =>
-        String(customer.officerId) === String(officerId)
+      (customer) => String(customer.officerId) === String(officerId),
     );
   },
 
   getById(id) {
-    return customers.find(
-      (customer) => String(customer.id) === String(id)
-    );
+    return customers.find((customer) => String(customer.id) === String(id));
   },
 };
 

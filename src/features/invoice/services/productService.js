@@ -1,4 +1,4 @@
-import products from "../data/products";
+import products from "../../../data/products";
 
 const productService = {
   getAll() {
@@ -6,9 +6,7 @@ const productService = {
   },
 
   getById(id) {
-    return products.find(
-      (product) => String(product.id) === String(id)
-    );
+    return products.find((product) => String(product.id) === String(id));
   },
 };
 

@@ -1,7 +1,7 @@
 import { useState } from "react";
-import customerService from "../../../services/customerService";
-import officerService from "../../../services/officerService";
-import productService from "../../../services/productService";
+import customerService from "../services/customerService";
+import officerService from "../services/officerService";
+import productService from "../services/productService";
 
 const useInvoice = () => {
   /* ================= OFFICER ================= */

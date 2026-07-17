@@ -1,16 +1,22 @@
 import Logo from "../assets/logo.png";
+import {
+  calculateSubtotal,
+  calculateTotalQty,
+  calculateGrandTotal,
+  calculateLineTotal,
+} from "../features/invoice/utils/invoiceCalculator";
+
 
 const Invoice = ({ invoice }) => {
-  const subtotal = invoice.items.reduce(
-    (sum, item) => sum + item.quantity * item.price,
-    0,
-  );
-  const totalQty = invoice.items.reduce(
-    (sum, item) => sum + Number(item.quantity || 0),
-    0,
-  );
+  const subtotal = calculateSubtotal(invoice.items);
 
-  const handlePrint = () => window.print();
+  const totalQty = calculateTotalQty(invoice.items);
+
+  const grandTotal = calculateGrandTotal(invoice.items);
+
+  const handlePrint = () => {
+    window.print();
+  };
 
   return (
     <div className="p-4">
@@ -137,7 +143,7 @@ const Invoice = ({ invoice }) => {
                   </td>
 
                   <td className="border p-2 text-right">
-                    {(item.quantity * Number(item.price || 0)).toFixed(2)}
+                    {calculateLineTotal(item).toFixed(2)}
                   </td>
                 </tr>
               ))}
@@ -184,7 +190,7 @@ const Invoice = ({ invoice }) => {
                 <tbody>
                   <tr className="border-b">
                     <td className="pr-4 font-medium">Subtotal = </td>
-                    <td className="text-right">{subtotal.toFixed(2)}</td>
+                    <td className="text-right">{grandTotal.toFixed(2)}</td>
                   </tr>
                   <tr className="border-b">
                     <td className="pr-4 font-medium">Sales Tax = </td>
@@ -192,7 +198,7 @@ const Invoice = ({ invoice }) => {
                   </tr>
                   <tr className="font-bold text-sm">
                     <td className="pr-4">Total = </td>
-                    <td className="text-right">{subtotal.toFixed(2)}</td>
+                    <td className="text-right">{grandTotal.toFixed(2)}</td>
                   </tr>
                 </tbody>
               </table>

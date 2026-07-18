@@ -1,15 +1,10 @@
-<<<<<<< HEAD:src/features/invoice/components/Invoice.jsx
 import Logo from "../../../assets/logo.png";
-=======
-import Logo from "../assets/logo.png";
 import {
-  calculateSubtotal,
-  calculateTotalQty,
   calculateGrandTotal,
   calculateLineTotal,
-} from "../features/invoice/utils/invoiceCalculator";
-
->>>>>>> 01db287ad64fad37d7966c48566e6ad77dabc9ca:src/components/Invoice.jsx
+  calculateSubtotal,
+  calculateTotalQty,
+} from "../utils/invoiceCalculator";
 
 const Invoice = ({ invoice }) => {
   const subtotal = calculateSubtotal(invoice.items);

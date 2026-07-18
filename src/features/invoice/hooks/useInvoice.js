@@ -6,6 +6,7 @@ import productService from "../services/productService";
 
 import { DEFAULT_INVOICE } from "../constants/invoiceConstants";
 import createInvoiceItem from "../utils/createInvoiceItem";
+import updateInvoiceItem from "../utils/updateInvoiceItem";
 
 const useInvoice = () => {
   /* ================= DATA ================= */
@@ -97,22 +98,23 @@ const useInvoice = () => {
 
     if (!product) return;
 
-    const updatedItems = [...invoiceData.items];
+    const updatedItems = updateInvoiceItem(
+        invoiceData.items,
+        index,
+        {
+          productId,
+          productName: product.name,
+          packSizeId: "",
+          packSizeLabel: "",
+          price: 0,
+        }
+      );
 
-    updatedItems[index] = {
-      ...updatedItems[index],
-      productId,
-      productName: product.name,
-      packSizeId: "",
-      packSizeLabel: "",
-      price: 0,
-    };
-
-    setInvoiceData((prev) => ({
-      ...prev,
-      items: updatedItems,
-    }));
-  };
+      setInvoiceData((prev) => ({
+        ...prev,
+        items: updatedItems,
+      }));
+        };
 
   const handlePackSizeSelect = (index, packSizeId) => {
     const item = invoiceData.items[index];
@@ -125,14 +127,15 @@ const useInvoice = () => {
 
     if (!pack) return;
 
-    const updatedItems = [...invoiceData.items];
-
-    updatedItems[index] = {
-      ...updatedItems[index],
-      packSizeId,
-      packSizeLabel: pack.label,
-      price: pack.unitPrice,
-    };
+    const updatedItems = updateInvoiceItem(
+      invoiceData.items,
+      index,
+      {
+        packSizeId,
+        packSizeLabel: pack.label,
+        price: pack.unitPrice,
+      }
+    );
 
     setInvoiceData((prev) => ({
       ...prev,
@@ -143,9 +146,16 @@ const useInvoice = () => {
   /* ================= ITEM ================= */
 
   const handleItemChange = (index, field, value) => {
-    const updatedItems = [...invoiceData.items];
-
-    updatedItems[index][field] = field === "quantity" ? Number(value) : value;
+    const updatedItems = updateInvoiceItem(
+      invoiceData.items,
+      index,
+      {
+        [field]:
+          field === "quantity"
+            ? Number(value)
+            : value,
+      }
+    );
 
     setInvoiceData((prev) => ({
       ...prev,

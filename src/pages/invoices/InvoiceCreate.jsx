@@ -1,5 +1,5 @@
-import Invoice from "../../components/Invoice";
 import CustomerSection from "../../features/invoice/components/CustomerSection";
+import Invoice from "../../features/invoice/components/Invoice";
 import InvoiceInfoSection from "../../features/invoice/components/InvoiceInfoSection";
 import InvoiceItemsSection from "../../features/invoice/components/InvoiceItemsSection";
 import OfficerSection from "../../features/invoice/components/OfficerSection";

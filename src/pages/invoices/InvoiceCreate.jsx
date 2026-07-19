@@ -65,6 +65,7 @@ const InvoiceCreate = () => {
           addItem={addItem}
           removeItem={removeItem}
         />
+        
       </div>
 
       {/* ================= RIGHT ================= */}

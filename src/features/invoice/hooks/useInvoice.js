@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import customerService from "../services/customerService";
 import officerService from "../services/officerService";
-import productService from "../services/productService";
+import productService from "../../product/services/productService";
 
 import { DEFAULT_INVOICE } from "../constants/invoiceConstants";
 import createInvoiceItem from "../utils/createInvoiceItem";

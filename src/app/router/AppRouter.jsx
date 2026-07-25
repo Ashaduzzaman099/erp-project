@@ -5,8 +5,7 @@ import AdminLayout from "../../layouts/AdminLayout";
 import Dashboard from "../../pages/Dashboard";
 import InvoiceCreate from "../../pages/invoices/InvoiceCreate";
 
-// import AddProduct from "../../pages/products/AddProduct";
-// import ViewAllProducts from "../../pages/products/ViewAllProducts";
+import ProductPage from "../../features/product/pages/ProductPage";
 
 function AppRouter() {
   return (
@@ -19,8 +18,7 @@ function AppRouter() {
           <Route path="/invoices/create" element={<InvoiceCreate />} />
 
           {/* Products */}
-          {/* <Route path="/products/create" element={<AddProduct />} />
-          <Route path="/products" element={<ViewAllProducts />} /> */}
+          <Route path="/products" element={<ProductPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

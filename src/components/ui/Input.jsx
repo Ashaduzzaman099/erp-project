@@ -6,7 +6,6 @@ const Input = ({ label, className = "", ...props }) => {
           {label}
         </label>
       )}
-
       <input
         {...props}
         className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-green-500 focus:outline-none"

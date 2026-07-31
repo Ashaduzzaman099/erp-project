@@ -71,7 +71,6 @@ function DataTable({
             )}
           </tbody>
         </table>
-        
       </div>
     </div>
   );

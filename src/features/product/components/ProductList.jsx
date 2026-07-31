@@ -64,7 +64,6 @@ function ProductList() {
           <button className="rounded border border-blue-500 px-2 py-1 text-xs text-blue-600 hover:bg-blue-50">
             Edit
           </button>
-
           <button className="rounded border border-red-500 px-2 py-1 text-xs text-red-600 hover:bg-red-50">
             Delete
           </button>

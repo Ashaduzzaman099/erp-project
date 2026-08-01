@@ -15,55 +15,79 @@ function DataTable({
     getCoreRowModel: getCoreRowModel(),
   });
 
+  const getAlignClass = (align = "left") => {
+    switch (align) {
+      case "center":
+        return "text-center";
+      case "right":
+        return "text-right";
+      default:
+        return "text-left";
+    }
+  };
+
   return (
     <div className="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm">
-      <div className="overflow-x-auto">
+      <div className="max-h-[600px] overflow-auto">
         <table className="min-w-full">
-          <thead className="bg-gray-100">
+          <thead className="sticky top-0 z-10 bg-gray-100">
             {table.getHeaderGroups().map((headerGroup) => (
               <tr key={headerGroup.id}>
-                {headerGroup.headers.map((header) => (
-                  <th
-                    key={header.id}
-                    className="px-4 py-3 text-left text-sm font-semibold text-gray-700"
-                  >
-                    {header.isPlaceholder
-                      ? null
-                      : flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )}
-                  </th>
-                ))}
+                {headerGroup.headers.map((header) => {
+                  const meta = header.column.columnDef.meta ?? {};
+
+                  return (
+                    <th
+                      key={header.id}
+                      style={{ width: meta.width }}
+                      className={`px-4 py-3 text-sm font-semibold text-gray-700 ${getAlignClass(
+                        meta.align
+                      )}`}
+                    >
+                      {header.isPlaceholder
+                        ? null
+                        : flexRender(
+                            header.column.columnDef.header,
+                            header.getContext()
+                          )}
+                    </th>
+                  );
+                })}
               </tr>
             ))}
           </thead>
 
           <tbody>
-            {table.getRowModel().rows.length > 0 ? (
+            {table.getRowModel().rows.length ? (
               table.getRowModel().rows.map((row) => (
                 <tr
                   key={row.id}
-                  className="border-t transition hover:bg-gray-50"
+                  className="border-t even:bg-gray-50 hover:bg-blue-50 transition"
                 >
-                  {row.getVisibleCells().map((cell) => (
-                    <td
-                      key={cell.id}
-                      className="px-4 py-3 text-sm text-gray-700"
-                    >
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
-                    </td>
-                  ))}
+                  {row.getVisibleCells().map((cell) => {
+                    const meta = cell.column.columnDef.meta ?? {};
+
+                    return (
+                      <td
+                        key={cell.id}
+                        className={`px-4 py-3 text-sm text-gray-700 ${getAlignClass(
+                          meta.align
+                        )} ${meta.cellClassName ?? ""}`}
+                      >
+                        {flexRender(
+                          cell.column.columnDef.cell,
+                          cell.getContext()
+                        )}
+                      </td>
+                    );
+                  })}
                 </tr>
               ))
             ) : (
               <tr>
                 <td
                   colSpan={columns.length}
-                  className="py-8 text-center text-gray-500"
+                  className="py-10 text-center text-gray-500"
                 >
                   {emptyMessage}
                 </td>

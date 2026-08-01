@@ -1,12 +1,13 @@
-import DataTable from "../../../components/common/DataTable/DataTable";
+import DataTable from "../../../components/common/DataTable";
 import productService from "../services/productService";
 
 function ProductList() {
   const products = productService.getAll();
 
-  const rows = products.flatMap((product) =>
+  const data = products.flatMap((product) =>
     product.packSizes.map((variant) => ({
       id: variant.optionId,
+      productId: product.id,
       productName: product.name,
       packSize: variant.label,
       unitPrice: variant.unitPrice,
@@ -17,46 +18,42 @@ function ProductList() {
 
   const columns = [
     {
-      key: "sl",
-      title: "SL",
-      render: (_, index) => index + 1,
-      align: "center",
+      accessorKey: "sl",
+      header: "SL",
+      cell: ({ row }) => row.index + 1,
     },
     {
-      key: "productName",
-      title: "Product",
+      accessorKey: "productName",
+      header: "Product",
     },
     {
-      key: "packSize",
-      title: "Pack Size",
+      accessorKey: "packSize",
+      header: "Pack Size",
     },
     {
-      key: "unitPrice",
-      title: "Unit Price",
-      align: "right",
-      render: (row) => row.unitPrice.toLocaleString(),
+      accessorKey: "unitPrice",
+      header: "Unit Price",
+      cell: ({ row }) =>
+        `৳ ${row.original.unitPrice.toLocaleString()}`,
     },
     {
-      key: "sku",
-      title: "SKU",
-      align: "center",
+      accessorKey: "sku",
+      header: "SKU",
     },
     {
-      key: "status",
-      title: "Status",
-      align: "center",
-      render: () => (
-        <span className="rounded bg-green-100 px-2 py-1 text-xs font-medium text-green-700">
+      accessorKey: "status",
+      header: "Status",
+      cell: () => (
+        <span className="rounded-full bg-green-100 px-2 py-1 text-xs font-medium text-green-700">
           Active
         </span>
       ),
     },
     {
-      key: "actions",
-      title: "Actions",
-      align: "center",
-      render: () => (
-        <div className="flex justify-center gap-2">
+      id: "actions",
+      header: "Actions",
+      cell: () => (
+        <div className="flex gap-2">
           <button className="rounded border px-2 py-1 text-xs hover:bg-gray-100">
             View
           </button>
@@ -64,6 +61,7 @@ function ProductList() {
           <button className="rounded border border-blue-500 px-2 py-1 text-xs text-blue-600 hover:bg-blue-50">
             Edit
           </button>
+
           <button className="rounded border border-red-500 px-2 py-1 text-xs text-red-600 hover:bg-red-50">
             Delete
           </button>
@@ -75,8 +73,8 @@ function ProductList() {
   return (
     <DataTable
       columns={columns}
-      data={rows}
-      emptyMessage="No products available."
+      data={data}
+      emptyMessage="No products found."
     />
   );
 }

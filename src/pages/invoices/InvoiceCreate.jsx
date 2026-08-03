@@ -14,11 +14,8 @@ const InvoiceCreate = () => {
     removeItem,
 
     selectedOfficerId,
-
     filteredCustomers,
-
     selectedCustomerId,
-
     invoiceData,
     setInvoiceData,
 
@@ -65,7 +62,6 @@ const InvoiceCreate = () => {
           addItem={addItem}
           removeItem={removeItem}
         />
-        
       </div>
 
       {/* ================= RIGHT ================= */}
@@ -75,7 +71,5 @@ const InvoiceCreate = () => {
     </div>
   );
 };
-
-
 
 export default InvoiceCreate;

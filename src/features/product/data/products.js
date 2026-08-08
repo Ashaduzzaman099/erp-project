@@ -145,50 +145,6 @@ const products = [
     ],
   },
 
-  /* ===================== 9 ===================== */
-  // {
-  //   id: "bluejeb-72-wp",
-  //   name: "BlueJeb 72 WP",
-  //   packSizes: [
-  //     { optionId: "500gm-12", label: "500gm x 12", unitPrice: 7200 },
-  //     { optionId: "100gm-36", label: "100gm x 36", unitPrice: 4619 },
-  //   ],
-  // },
-  // {
-  //   id: "nishajeb-80-wp",
-  //   name: "Nishajeb 80 WP",
-  //   packSizes: [
-  //     { optionId: "1kg-10", label: "1kg x 10", unitPrice: 9035 },
-  //     { optionId: "500gm-20", label: "500gm x 20", unitPrice: 9273 },
-  //     { optionId: "100gm-36", label: "100gm x 36", unitPrice: 3478 },
-  //   ],
-  // },
-
-  /* ===================== 14 ===================== */
-  // {
-  //   id: "ucc-zinc-10",
-  //   name: "Ucc Zinc 10%",
-  //   packSizes: [{ optionId: "17gm-40", label: "17gm x 40", unitPrice: 1365 }],
-  // },
-
-  /* ===================== 15 ===================== */
-  // {
-  //   id: "ucc-mag",
-  //   name: "Ucc Mag",
-  //   packSizes: [
-  //     { optionId: "1kg-20", label: "1kg x 20", unitPrice: null },
-  //   ],
-  // },
-
-  /* ===================== 23 ===================== */
-  // {
-  //   id: "bluejeb-72-wp-extended",
-  //   name: "BlueJeb 72 WP",
-  //   packSizes: [
-  //     { optionId: "1kg-10", label: "1kg x 10", unitPrice: 9035 },
-  //     { optionId: "500gm-20", label: "500gm x 20", unitPrice: 9273 },
-  //   ],
-  // },
 ];
 
 export default products;

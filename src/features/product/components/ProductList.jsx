@@ -26,7 +26,6 @@ function ProductList() {
       align: "center",
     },
   },
-
   {
     accessorKey: "productName",
     header: "Product",
@@ -34,7 +33,6 @@ function ProductList() {
       width: "280px",
     },
   },
-
   {
     accessorKey: "packSize",
     header: "Pack Size",
@@ -42,7 +40,6 @@ function ProductList() {
       width: "180px",
     },
   },
-
   {
     accessorKey: "unitPrice",
     header: "Unit Price",
@@ -53,7 +50,6 @@ function ProductList() {
       align: "right",
     },
   },
-  
   {
     accessorKey: "sku",
     header: "SKU",

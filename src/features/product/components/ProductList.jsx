@@ -1,10 +1,18 @@
 import DataTable from "../../../components/common/DataTable";
 import productService from "../services/productService";
+import { useMemo, useState } from "react";
+import DataTable from "../../../components/common/DataTable";
+import DataTableToolbar from "../../../components/common/DataTable/DataTableToolbar";
+import productService from "../services/productService";
 
 function ProductList() {
   const products = productService.getAll();
+  const [search, setSearch] = useState("");
 
-  const data = products.flatMap((product) =>
+  const data = useMemo(() => {
+  const products = productService.getAll();
+
+  const rows = products.flatMap((product) =>
     product.packSizes.map((variant) => ({
       id: variant.optionId,
       productId: product.id,
@@ -15,6 +23,24 @@ function ProductList() {
       status: "Active",
     }))
   );
+
+  const searchText = search.trim().toLowerCase();
+
+  if (!searchText) {
+    return rows;
+  }
+
+  return rows.filter((row) =>
+    [
+      row.productName,
+      row.packSize,
+      row.sku,
+      row.status,
+    ].some((value) =>
+      String(value).toLowerCase().includes(searchText)
+    )
+  );
+}, [search]);
 
   const columns = [
   {
@@ -97,12 +123,20 @@ function ProductList() {
 ];
 
   return (
+  <div>
+    <DataTableToolbar
+      searchValue={search}
+      onSearchChange={setSearch}
+      searchPlaceholder="Search product, pack size or SKU..."
+    />
+
     <DataTable
       columns={columns}
       data={data}
       emptyMessage="No products found."
     />
-  );
+  </div>
+);
 }
 
 export default ProductList;

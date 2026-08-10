@@ -52,6 +52,8 @@ function ProductList() {
       align: "center",
     },
   },
+
+  
   {
     accessorKey: "productName",
     header: "Product",

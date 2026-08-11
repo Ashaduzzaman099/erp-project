@@ -148,6 +148,7 @@ function ProductList() {
         data={data}
         emptyMessage="No products found."
       />
+      
     </div>
   );
 }

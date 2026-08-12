@@ -22,6 +22,7 @@ function DataTableToolbar({
         {children}
       </div>
     </div>
+    
   );
 }
 

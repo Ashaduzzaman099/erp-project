@@ -6,7 +6,6 @@ import productService from "../services/productService";
 
 function ProductList() {
   const [search, setSearch] = useState("");
-
   const products = productService.getAll();
 
   const data = useMemo(() => {
@@ -19,7 +18,7 @@ function ProductList() {
         unitPrice: variant.unitPrice,
         sku: "-",
         status: "Active",
-      }))
+      })),
     );
 
     const searchText = search.trim().toLowerCase();
@@ -29,14 +28,9 @@ function ProductList() {
     }
 
     return rows.filter((row) =>
-      [
-        row.productName,
-        row.packSize,
-        row.sku,
-        row.status,
-      ].some((value) =>
-        String(value).toLowerCase().includes(searchText)
-      )
+      [row.productName, row.packSize, row.sku, row.status].some((value) =>
+        String(value).toLowerCase().includes(searchText),
+      ),
     );
   }, [products, search]);
 
@@ -70,8 +64,7 @@ function ProductList() {
     {
       accessorKey: "unitPrice",
       header: "Unit Price",
-      cell: ({ row }) =>
-        `৳ ${Number(row.original.unitPrice).toLocaleString()}`,
+      cell: ({ row }) => `৳ ${Number(row.original.unitPrice).toLocaleString()}`,
       meta: {
         width: "140px",
         align: "right",
@@ -112,14 +105,12 @@ function ProductList() {
           >
             View
           </button>
-
           <button
             type="button"
             className="rounded border border-blue-500 px-2 py-1 text-xs text-blue-600 hover:bg-blue-50"
           >
             Edit
           </button>
-
           <button
             type="button"
             className="rounded border border-red-500 px-2 py-1 text-xs text-red-600 hover:bg-red-50"
@@ -148,7 +139,6 @@ function ProductList() {
         data={data}
         emptyMessage="No products found."
       />
-      
     </div>
   );
 }

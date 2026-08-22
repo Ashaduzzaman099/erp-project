@@ -10,7 +10,6 @@ const Sidebar = () => {
   const handleToggle = (key) => {
     setOpenMenu((prev) => (prev === key ? null : key));
   };
-
   const linkClass = "block p-2 rounded hover:bg-green-600 cursor-pointer";
 
   return (
@@ -68,5 +67,7 @@ const Sidebar = () => {
     </div>
   );
 };
+
+
 
 export default Sidebar;

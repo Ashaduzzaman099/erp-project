@@ -6,12 +6,11 @@ export const DEFAULT_INVOICE = {
     name: "",
     phone: "",
   },
-
   customer: {
     name: "",
     business: "",
     address: "",
     mobile: "",
   },
-  
+
 };

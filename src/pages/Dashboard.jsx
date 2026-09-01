@@ -9,7 +9,6 @@ const Dashboard = () => {
       icon: <FaUserTie className="w-6 h-6 text-green-600" />,
       date: "Updated: Jan 8, 2026",
     },
-
     {
       title: "Total Customers",
       value: 34,

@@ -88,13 +88,12 @@ function ProductList() {
           Active
         </span>
       ),
-      
+
       meta: {
         width: "120px",
         align: "center",
       },
     },
-
     {
       id: "actions",
       header: "Actions",

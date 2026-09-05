@@ -15,7 +15,6 @@ const Dashboard = () => {
       icon: <FaUsers className="w-6 h-6 text-blue-600" />,
       date: "Updated: Jan 8, 2026",
     },
-
     {
       title: "Total Products",
       value: 56,

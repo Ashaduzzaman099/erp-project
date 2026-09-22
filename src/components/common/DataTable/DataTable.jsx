@@ -4,11 +4,7 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 
-function DataTable({
-  columns,
-  data,
-  emptyMessage = "No data found.",
-}) {
+function DataTable({ columns, data, emptyMessage = "No data found." }) {
   const table = useReactTable({
     data,
     columns,
@@ -35,20 +31,19 @@ function DataTable({
               <tr key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
                   const meta = header.column.columnDef.meta ?? {};
-
                   return (
                     <th
                       key={header.id}
                       style={{ width: meta.width }}
                       className={`px-4 py-3 text-sm font-semibold text-gray-700 ${getAlignClass(
-                        meta.align
+                        meta.align,
                       )}`}
                     >
                       {header.isPlaceholder
                         ? null
                         : flexRender(
                             header.column.columnDef.header,
-                            header.getContext()
+                            header.getContext(),
                           )}
                     </th>
                   );
@@ -71,12 +66,12 @@ function DataTable({
                       <td
                         key={cell.id}
                         className={`px-4 py-3 text-sm text-gray-700 ${getAlignClass(
-                          meta.align
+                          meta.align,
                         )} ${meta.cellClassName ?? ""}`}
                       >
                         {flexRender(
                           cell.column.columnDef.cell,
-                          cell.getContext()
+                          cell.getContext(),
                         )}
                       </td>
                     );
@@ -99,5 +94,4 @@ function DataTable({
     </div>
   );
 }
-
 export default DataTable;

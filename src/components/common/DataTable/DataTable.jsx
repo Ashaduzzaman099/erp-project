@@ -78,6 +78,7 @@ function DataTable({ columns, data, emptyMessage = "No data found." }) {
                   })}
                 </tr>
               ))
+
             ) : (
               <tr>
                 <td

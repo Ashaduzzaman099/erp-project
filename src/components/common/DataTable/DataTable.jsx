@@ -10,7 +10,6 @@ function DataTable({ columns, data, emptyMessage = "No data found." }) {
     columns,
     getCoreRowModel: getCoreRowModel(),
   });
-
   const getAlignClass = (align = "left") => {
     switch (align) {
       case "center":
@@ -61,7 +60,6 @@ function DataTable({ columns, data, emptyMessage = "No data found." }) {
                 >
                   {row.getVisibleCells().map((cell) => {
                     const meta = cell.column.columnDef.meta ?? {};
-
                     return (
                       <td
                         key={cell.id}
@@ -78,7 +76,6 @@ function DataTable({ columns, data, emptyMessage = "No data found." }) {
                   })}
                 </tr>
               ))
-
             ) : (
               <tr>
                 <td

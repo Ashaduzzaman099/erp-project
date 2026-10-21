@@ -26,7 +26,7 @@ const InvoiceCreate = () => {
     handleItemChange,
   } = useInvoice();
 
-  /* ================= UI ================= */
+  /* ================ UI ================ */
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 p-6">
       {/* ================= LEFT ================= */}
